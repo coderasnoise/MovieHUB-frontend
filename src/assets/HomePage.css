@@ -1,0 +1,37 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.featured-content {
+    color: white;
+    text-align: center;
+    background-image: url('images/cards.jpg');
+    background-size: cover;
+    background-position: center;  /* Center the background image */
+    height: 100vh;  /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Center content vertically */
+    align-items: center;  /* Center content horizontally */
+}
+
+.text-box {
+    background-color: rgba(0, 0, 0, 0.6);  /* Semi-transparent black background */
+    backdrop-filter: blur(10px);  /* Blur effect for the background */
+    padding: 20px;
+    border-radius: 10px;  /* Rounded corners for a softer look */
+    width: auto;  /* Automatically adjust width based on content */
+    max-width: 600px;  /* Prevent the box from becoming too wide */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* Subtle shadow for depth */
+}
+
+.featured-content h1 {
+    font-size: 2.5em;
+}
+
+.featured-content p {
+    font-size: 1.2em;
+}
