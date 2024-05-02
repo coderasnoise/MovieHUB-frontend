@@ -7,7 +7,7 @@ import '../assets/ContentGrid.css';  // CSS dosyası için
 const ContentGrid = () => {
     const [contents, setContents] = useState([]);
 
-    useEffect(() => {
+   /* useEffect(() => {
         const fetchContents = async () => {
             const response = await axios.get('http://localhost:5000/contents');  // Backend URL'niz
             setContents(response.data);
@@ -15,7 +15,7 @@ const ContentGrid = () => {
 
         fetchContents();
     }, []);
-
+*/
     return (
         <div className="content-grid">
             {contents.map(content => (

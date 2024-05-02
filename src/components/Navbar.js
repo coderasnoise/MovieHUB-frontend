@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../assets/Navbar.css';  // Stiller için CSS dosyası
 import SearchBar from './SearchBar';
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, logout }) => {
     return (
         <nav className="navbar">
             <Link to="/" className="navbar-logo">
@@ -16,7 +16,7 @@ const Navbar = ({ user }) => {
                         <SearchBar onSearch={(term) => console.log(term)} />
                         <li><Link to="/profile">Profile</Link></li>
                         <li>
-                            <button /*onClick={/* logout function }*/>
+                            <button onClick={ logout }>
                                 Logout
                             </button>
                         </li>

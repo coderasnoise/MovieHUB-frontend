@@ -1,4 +1,4 @@
-
+import '../assets/AuthForm.css'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,28 +9,23 @@ const LoginPage = ({ login }) => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        // API login işlemi
-        // Eğer başarılı ise:
-        login();
-        navigate('/', { replace: true });
+        login({ username });
+        navigate('/home', { replace: true });
     };
 
     return (
-        <form onSubmit={handleLogin}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-            />
-            <button type="submit">Login</button>
-        </form>
+        <div className="auth-form-container">
+            <form className="auth-form" onSubmit={handleLogin}>
+                <h2>Giriş yap</h2>
+                <label htmlFor="username">Kullanıcı Adı:</label>
+                <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+                <label htmlFor="password">Şifre:</label>
+                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                       required/>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
     );
 };
 
