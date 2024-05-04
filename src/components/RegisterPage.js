@@ -1,3 +1,4 @@
+// src/components/RegisterPage.js
 import '../assets/AuthForm.css';
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -12,12 +13,11 @@ const RegisterPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/register', { username, email, password });
+            await axios.post('http://localhost:5000/register', { username, email, password });
             alert('Registration successful!');
             history.push('/login');  // Giriş sayfasına yönlendir
         } catch (error) {
-            console.error('Registration failed:', error);
-            alert('Registration failed, please try again!');
+
         }
     };
 

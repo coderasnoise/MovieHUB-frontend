@@ -1,0 +1,57 @@
+/* UserProfile.css */
+body {
+    background-color: #141414; /* Netflix dark background */
+    color: #fff; /* White text color */
+    font-family: Arial, sans-serif; /* Clean, modern font */
+}
+
+.user-profile-container {
+    max-width: 600px; /* Restrict the max width for better layout */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Padding around the content */
+}
+
+.user-profile-container h2, .user-profile-container h3 {
+    border-bottom: 1px solid #ff5722; /* Red underline for headings */
+    padding-bottom: 10px; /* Spacing below the text */
+}
+
+.label {
+    display: block; /* Ensure labels are block level for better control */
+    margin: 10px 0 5px; /* Space above and below labels */
+}
+
+.input {
+    width: 100%; /* Full width to fit container */
+    padding: 8px; /* Padding for comfort */
+    margin-bottom: 10px; /* Space below each input */
+    background-color: #333; /* Darker background for input */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    color: #fff; /* White input text */
+}
+
+.button {
+    padding: 10px 20px; /* Padding for button size */
+    background-color: #ff5722; /* Netflix red for buttons */
+    color: #fff; /* White text for contrast */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer to indicate clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.button:hover {
+    background-color: #ff5722; /* Slightly lighter red on hover */
+}
+
+.favorites-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.favorites-list li {
+    padding: 10px; /* Padding for each list item */
+    border-bottom: 1px solid #333; /* Subtle separation between items */
+}
+

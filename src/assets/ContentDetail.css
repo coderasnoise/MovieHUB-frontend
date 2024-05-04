@@ -1,0 +1,35 @@
+/* ContentDetail.css */
+.content-detail {
+    background-color: #181818; /* Dark background for better viewing */
+    color: #fff; /* White text for high contrast */
+    min-height: 100vh; /* Full height of the viewport */
+    padding: 20px; /* Padding around the content */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering the content horizontally */
+}
+
+.content-detail h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Large font size for the title */
+}
+
+/* Styling for the ReactPlayer component */
+.react-player {
+    width: 85vw; /* Responsive width, 85% of the viewport width */
+    height: calc(85vw * 9 / 16); /* Maintain a 16:9 aspect ratio */
+    max-width: 1200px; /* Maximum width of the player */
+    max-height: 675px; /* Maximum height of the player */
+}
+
+/* Paragraph styling for descriptions, keeping it subdued */
+.content-detail p {
+    max-width: 80%; /* Restricting width for readability */
+    text-align: center; /* Center-aligned text */
+    font-size: 1.2em; /* Slightly larger font size */
+    line-height: 1.6; /* Improved line spacing */
+    margin-top: 20px; /* Space after the video player */
+}
+
+/* Add any additional styles for buttons or navigation here */

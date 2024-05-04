@@ -1,0 +1,53 @@
+/* LandingPage.css */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #141414; /* Dark background for the entire page */
+    color: #fff; /* White text color for better readability */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Netflix uses a similar font stack */
+}
+
+/* General styling for content containers */
+.content-container {
+    max-width: 1200px; /* Limit content width for better layout */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Padding around content for spacing */
+}
+
+/* Style adjustments for ContentGrid components */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+    gap: 10px; /* Space between grid items */
+}
+
+.content-grid-item {
+    position: relative; /* Relative positioning for overlay/effects */
+    overflow: hidden; /* Hides anything outside the bounds of the item */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.content-grid-item img {
+    width: 100%;
+    transition: transform 0.3s ease; /* Smooth transform effect on hover */
+}
+
+.content-grid-item:hover img {
+    transform: scale(1.1); /* Scale up images on hover */
+}
+
+.content-grid-item .info {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay for text */
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    text-align: center; /* Center-align text */
+    transition: opacity 0.3s ease; /* Smooth opacity transition */
+    opacity: 0;
+}
+
+.content-grid-item:hover .info {
+    opacity: 1; /* Show info on hover */
+}

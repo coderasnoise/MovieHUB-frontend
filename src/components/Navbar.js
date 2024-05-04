@@ -1,22 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/Navbar.css';  // Stiller için CSS dosyası
+import { useAuth } from '../context/AuthContext';
+import '../assets/Navbar.css';
 import SearchBar from './SearchBar';
 
-const Navbar = ({ user, logout }) => {
+const Navbar = () => {
+    const { token, logout } = useAuth();
+
     return (
         <nav className="navbar">
-            <Link to="/" className="navbar-logo">
+            <Link to={token ? "/home" : "/"} className="navbar-logo">
                 MovieHub
             </Link>
-
             <ul className="nav-links">
-                {user ? (
+                {token ? (
                     <>
                         <SearchBar onSearch={(term) => console.log(term)} />
                         <li><Link to="/profile">Profile</Link></li>
                         <li>
-                            <button onClick={ logout }>
+                            <button onClick={() => { logout(); }}>
                                 Logout
                             </button>
                         </li>

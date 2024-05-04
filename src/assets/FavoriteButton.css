@@ -1,0 +1,22 @@
+/* FavoriteButton.css */
+.favorite-button {
+    background-color: transparent; /* Transparent background to fit any background */
+    color: #ff5722; /* Netflix-like red for emphasis */
+    border: 2px solid #ff5722; /* Red border to make it pop */
+    padding: 8px 16px; /* Padding for better touch */
+    font-size: 16px; /* Readable font size */
+    font-weight: bold; /* Bold text */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer to indicate it's clickable */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    outline: none; /* Remove default focus outline */
+}
+
+.favorite-button:hover {
+    background-color: #ff5722; /* Change background on hover */
+    color: #ffffff; /* White text color on hover */
+}
+
+.favorite-button:active {
+    transform: scale(0.95); /* Slight scale down on click */
+}

@@ -1,25 +1,36 @@
 // src/components/ContentGrid.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ContentCard from './ContentCard';
-import '../assets/ContentGrid.css';  // CSS dosyası için
+import { useAuth } from '../context/AuthContext';
+import '../assets/ContentGrid.css';
 
 const ContentGrid = () => {
     const [contents, setContents] = useState([]);
+    const { token } = useAuth();
 
-   /* useEffect(() => {
+    useEffect(() => {
         const fetchContents = async () => {
-            const response = await axios.get('http://localhost:5000/contents');  // Backend URL'niz
-            setContents(response.data);
+            try {
+                const response = await axios.get('http://localhost:5000/contents', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setContents(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching contents:', error);
+            }
         };
 
-        fetchContents();
-    }, []);
-*/
+        if (token) {
+            fetchContents();
+        }
+    }, [token]);
+
     return (
         <div className="content-grid">
-            {contents.map(content => (
-                <ContentCard key={content.id} content={content} />
+            {contents.map((content, index) => (
+                <ContentCard key={`${content.title}-${index}`} content={content} />
             ))}
         </div>
     );
