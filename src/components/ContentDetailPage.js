@@ -18,18 +18,25 @@ const ContentDetailPage = () => {
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/contents/${contentId}`, {
+                const contentResponse = await axios.get(`http://localhost:5000/contents/${contentId}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
-                setContent(response.data);
-                setIsFavorited(response.data.isFavorited); // API'den isFavorited bilgisini ayarlama
-                setFavoriteId(response.data.favoriteId); // API'den favoriteId bilgisini ayarlama
+                setContent(contentResponse.data);
+                // Aynı anda favori listesini de kontrol et
+                const favoritesResponse = await axios.get(`http://localhost:5000/favorites/${userId}`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                const favorite = favoritesResponse.data.find(fav => fav.content_id === parseInt(contentId));
+                if (favorite) {
+                    setIsFavorited(true);
+                    setFavoriteId(favorite.favorite_id);
+                }
             } catch (error) {
-                console.error('Error fetching content:', error);
+                console.error('Error fetching content or favorites:', error);
             }
         };
         fetchContent();
-    }, [contentId, token]); // favoriteId'i bağımlılıklardan çıkar
+    }, [contentId, userId, token]);
 
     const toggleFavorite = async () => {
         if (isFavorited) {
@@ -44,6 +51,8 @@ const ContentDetailPage = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
+                setIsFavorited(response.data.isFavorited); // API'den isFavorited bilgisini ayarlama
+                setFavoriteId(response.data.favoriteId);
                 console.log('Favorite deleted successfully:', response.data);
             } catch (error) {
                 console.error('Error removing favorite:', error);
@@ -57,7 +66,6 @@ const ContentDetailPage = () => {
                 }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
-                console.log(response.data);
                 if (response.data.id === favoriteId) {
                     setIsFavorited(true);
                     setFavoriteId(response.data[0].favorite_id); // POST isteğinden dönen favorite_id ile güncelle
