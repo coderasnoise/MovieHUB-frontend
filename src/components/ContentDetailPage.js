@@ -5,14 +5,13 @@ import ReactPlayer from 'react-player';
 import { useAuth } from '../context/AuthContext';
 import '../assets/ContentDetail.css';
 import FavoriteButton from './FavoriteButton';
-import '../assets/FavoriteButton.css'
-
+import '../assets/FavoriteButton.css';
 
 const ContentDetailPage = () => {
     const { contentId } = useParams();
     const [content, setContent] = useState(null);
     const [isFavorited, setIsFavorited] = useState(false);
-    const { token, userId } = useAuth();  // useAuth'dan userId'yi de al
+    const { token, userId } = useAuth();
     const [favoriteId, setFavoriteId] = useState(null);
 
     useEffect(() => {
@@ -22,7 +21,7 @@ const ContentDetailPage = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setContent(contentResponse.data);
-                // Aynı anda favori listesini de kontrol et
+
                 const favoritesResponse = await axios.get(`http://localhost:5000/favorites/${userId}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -43,7 +42,7 @@ const ContentDetailPage = () => {
             if (!favoriteId) {
                 console.error('Error: No favoriteId provided for removing from favorites');
                 alert('No favoriteId provided for removing from favorites');
-                return;  // Eğer favoriteId tanımlı değilse, işlemi durdur.
+                return;
             }
             try {
                 const response = await axios.delete(`http://localhost:5000/favorites/${favoriteId}`, {
@@ -51,7 +50,7 @@ const ContentDetailPage = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                setIsFavorited(response.data.isFavorited); // API'den isFavorited bilgisini ayarlama
+                setIsFavorited(response.data.isFavorited);
                 setFavoriteId(response.data.favoriteId);
                 console.log('Favorite deleted successfully:', response.data);
             } catch (error) {
@@ -68,11 +67,10 @@ const ContentDetailPage = () => {
                 });
                 if (response.data.id === favoriteId) {
                     setIsFavorited(true);
-                    setFavoriteId(response.data[0].favorite_id); // POST isteğinden dönen favorite_id ile güncelle
+                    setFavoriteId(response.data[0].favorite_id);
 
                 } else {
                     console.error('No favorite_id returned from the server.');
-                    alert('Failed to add to favorites. Please try again.');
                 }
             } catch (error) {
                 console.error('Error adding to favorites:', error);
@@ -81,7 +79,6 @@ const ContentDetailPage = () => {
         }
     };
 
-
     if (!content) {
         return <div>Loading...</div>;
     }
@@ -89,7 +86,11 @@ const ContentDetailPage = () => {
     return (
         <div className="content-detail">
             <h1>{content.title}</h1>
-            <ReactPlayer url={content.videoUrl} controls />
+            {content.video_url ? (
+                <ReactPlayer url={content.video_url} controls />
+            ) : (
+                <p>Video URL not available</p>
+            )}
             <p>{content.description}</p>
             <FavoriteButton isFavorited={isFavorited} toggleFavorite={toggleFavorite} />
         </div>

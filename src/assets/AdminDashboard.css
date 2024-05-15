@@ -1,0 +1,39 @@
+/* AdminDashboard.css */
+.admin-dashboard {
+    background-color: #141414; /* Dark background similar to Netflix */
+    color: #fff; /* White text color */
+    font-family: Arial, sans-serif; /* Clean, modern font choice */
+    padding: 20px; /* Padding around the content */
+    min-height: 100vh; /* Full height */
+}
+
+.admin-dashboard h1 {
+    color: #ff5722; /* Red color similar to Netflix branding */
+    text-align: center; /* Centering the title */
+}
+
+.admin-dashboard nav ul {
+    list-style: none; /* Removing default list styling */
+    padding: 0; /* Remove padding */
+    text-align: center; /* Center align the navigation items */
+}
+
+.admin-dashboard nav ul li {
+    margin-top: 50px; /* Space between items */
+}
+
+.admin-dashboard nav ul li a {
+    color: #fff; /* White text links */
+    text-decoration: none; /* No underline */
+    font-size: 18px; /* Slightly larger font size for readability */
+    background-color: #333; /* Dark grey background for the links */
+    padding: 10px 20px; /* Padding for better touch area */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+
+}
+
+.admin-dashboard nav ul li a:hover {
+    background-color: #ff5722; /* Change background on hover */
+    color: #000; /* Change text color on hover for contrast */
+}

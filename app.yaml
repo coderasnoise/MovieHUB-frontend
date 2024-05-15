@@ -1,0 +1,13 @@
+runtime: nodejs20
+
+handlers:
+  - url: /(.*\.(json|ico|js|png|jpg|css|map))$
+    static_files: build/\1
+    upload: build/.*\.(json|ico|js|png|jpg|css|map)$
+
+  - url: /static
+    static_dir: build/static
+
+  - url: /(.*)
+    static_files: build/index.html
+    upload: build/index.html

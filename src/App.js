@@ -9,6 +9,9 @@ import LoginPage from './components/LoginPage';
 import RegisterPage from "./components/RegisterPage";
 import UserProfile from "./components/ProfilePage";
 import ContentDetailPage from "./components/ContentDetailPage";
+import AdminDashboard from './components/AdminDashboard';
+import ManageUsers from './components/ManageUsers';
+import ManageContents from './components/ManageContents';
 
 function App() {
     return (
@@ -22,6 +25,9 @@ function App() {
                     <Route path="/home" element={<LandingPage />} />
                     <Route path="/profile" element={<UserProfile />} />
                     <Route path="/contents/:contentId" element={<ContentDetailPage />}/>
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/admin/manage-users" element={<ManageUsers />} />
+                    <Route path="/admin/manage-contents" element={<ManageContents />} />
                 </Routes>
             </Router>
         </AuthProvider>
